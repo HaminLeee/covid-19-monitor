@@ -4,7 +4,13 @@
 ## COVID-19 Monitor
 Website for live information about COVID-19.
 
+## Demo
+![Demo](./demo.jpg)
+
+Press enter after typing in your country name
+
 
 ### Credit
+- NovelCOVID/API (https://github.com/NovelCOVID/API)
 - Copyright 2019 Creative Tim (https://www.creative-tim.com)
 - Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard-angular/blob/master/LICENSE.md)
