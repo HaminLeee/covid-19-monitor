@@ -16,9 +16,9 @@ import { Chart } from 'chart.js';
 
 export class DashboardComponent implements OnInit{
     // Fetched Data
-    public allCovidData: object;
+    public allCovidData: any;
     public allCountryCases: any[];
-    public singleCase: object;
+    public singleCase: any;
 
     // Manipulated Data
     public labels: string[] = [];
