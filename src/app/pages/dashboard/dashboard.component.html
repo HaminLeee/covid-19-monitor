@@ -1,4 +1,5 @@
 <div class="row">
+  
   <div class="col-lg-4 col-md-6 col-sm-6">
     <div class="card card-stats">
       <div class="card-body ">
@@ -72,16 +73,171 @@
     <div class="col-lg-12 col-md-12 col-sm-12 mt-5">
       <div id="card">
           <h3>Search detailed information of your country</h3>
-          <input (keydown.enter)="searchCountry($event)" class="mr-3"> <strong>Press Enter</strong>
-          <p></p>
-          <p>Country: {{ singleCase.country }}</p>
-          <p>Cases: {{ singleCase.cases }}</p>
-          <p>Today's Cases: {{ singleCase.todayCases }}</p>
-          <p>Deaths: {{ singleCase.deaths }}</p>
-          <p>Today's Deaths: {{ singleCase.todayDeaths }}</p>
-          <p>Recoverd: {{ singleCase.recovered }}</p>
-          <p>Active: {{ singleCase.active }}</p>
-          <p>Critical: {{ singleCase.critical }}</p>
+          <strong><h5>Search Here (Press Enter or Return): </h5> </strong> <input placeholder="Canada" (keydown.enter)="searchCountry($event)" class="form-control mr-3 mb-2"> 
+          <br/>
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-body ">
+                  <div class="row">
+                    <div class="col-5 col-md-4">
+                      <div class="icon-big text-center icon-danger">
+                        <i class="nc-icon nc-world-2 text-success"></i>
+                      </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                      <div class="numbers">
+                        <p class="card-category"><strong>Country</strong></p>
+                        <p class="card-title">{{ singleCase.country }}
+                          <p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-body ">
+                  <div class="row">
+                    <div class="col-5 col-md-4">
+                      <div class="icon-big text-center icon-danger">
+                        <i class="nc-icon nc-world-2 text-warning"></i>
+                      </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                      <div class="numbers">
+                        <p class="card-category"><strong>Cases</strong></p>
+                        <p class="card-title">{{ singleCase.cases }}
+                          <p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-body ">
+                  <div class="row">
+                    <div class="col-5 col-md-4">
+                      <div class="icon-big text-center icon-danger">
+                        <i class="nc-icon nc-world-2 text-warning"></i>
+                      </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                      <div class="numbers">
+                        <p class="card-category"><strong>Today's Cases</strong></p>
+                        <p class="card-title">{{ singleCase.todayCases }}
+                          <p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-body ">
+                  <div class="row">
+                    <div class="col-5 col-md-4">
+                      <div class="icon-big text-center icon-danger">
+                        <i class="nc-icon nc-ambulance text-danger"></i>
+                      </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                      <div class="numbers">
+                        <p class="card-category"><strong>Deaths</strong></p>
+                        <p class="card-title">{{ singleCase.deaths }}
+                          <p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-body ">
+                  <div class="row">
+                    <div class="col-5 col-md-4">
+                      <div class="icon-big text-center icon-danger">
+                        <i class="nc-icon nc-ambulance text-danger"></i>
+                      </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                      <div class="numbers">
+                        <p class="card-category"><strong>Today's Death</strong></p>
+                        <p class="card-title">{{ singleCase.todayDeaths }}
+                          <p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-body ">
+                  <div class="row">
+                    <div class="col-5 col-md-4">
+                      <div class="icon-big text-center icon-danger">
+                        <i class="nc-icon nc-favourite-28 text-success"></i>
+                      </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                      <div class="numbers">
+                        <p class="card-category"><strong>Recovered</strong></p>
+                        <p class="card-title">{{ singleCase.recovered }}
+                          <p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-body ">
+                  <div class="row">
+                    <div class="col-5 col-md-4">
+                      <div class="icon-big text-center icon-danger">
+                        <i class="nc-icon nc-ambulance text-danger"></i>
+                      </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                      <div class="numbers">
+                        <p class="card-category"><strong>Active</strong></p>
+                        <p class="card-title">{{ singleCase.active }}
+                          <p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-body ">
+                  <div class="row">
+                    <div class="col-5 col-md-4">
+                      <div class="icon-big text-center icon-danger">
+                        <i class="nc-icon nc-ambulance text-danger"></i>
+                      </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                      <div class="numbers">
+                        <p class="card-category"><strong>Critical</strong></p>
+                        <p class="card-title">{{ singleCase.critical }}
+                          <p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
     </div>
   </div>
 <div class="row">
@@ -94,14 +250,14 @@
   </div>
 </div>
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 mt-5">
-      <a  href="https://github.com/haminthecoder/covid-19-monitor">
-        <div id="card">
-            <h5 class="text-black-50"><strong>🤖 Link to Github</strong></h5>
-        </div>
-      </a>
-    </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 mt-5">
+    <a  href="https://github.com/haminthecoder/covid-19-monitor">
+      <div id="card">
+          <h5 class="text-black-50"><strong>🤖 Link to Github</strong></h5>
+      </div>
+    </a>
   </div>
+</div>
 
 
 
