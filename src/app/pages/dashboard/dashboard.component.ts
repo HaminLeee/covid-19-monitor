@@ -11,71 +11,74 @@ import { Chart } from 'chart.js';
 export class DashboardComponent implements OnInit{
     public allCovidData: object = {};
     public allCountryCases: any[] = [];
+    public labels: string[] = [];
+    public deathData: number[] = [];
+    public cases: number[] = [];
+    public recovered: number[] = [];
 
     constructor(private dataService: DataService) {}
 
+    getAllCovidData(): void {
+      this.dataService
+        .getAllCases()
+        .subscribe((data: any) => {
+          this.allCovidData = data;
+        });
+    }
+
+    getAllCountriesCases(): void {
+      this.dataService
+        .getAllCountriesCases()
+        .subscribe((data: any) => {
+          this.allCountryCases = data;
+          data.slice(0,20).map(country => {
+            this.labels.push(country.country);
+            this.deathData.push(country.deaths); 
+            this.cases.push(country.cases);
+            this.recovered.push(country.recovered)
+          });
+        })
+    }
     private accessToken: string = 'YOUR_API';
 
     ngOnInit(){
-      let labels: any[];
-      let deathData: any[];
+      // let labels: string[];
+      // let deathData: any[];
       // GET data from API
-      this.dataService
-      .getAllCases()
-      .subscribe((data: any) => {
-        console.log(data);
-        this.allCovidData = data;
-      });
-
-      this.dataService
-      .getAllCountriesCases()
-      .subscribe((data: any) => {
-        console.log(data);
-        this.allCountryCases = data;
-        console.log(this.allCountryCases)
-      })
-
-      labels = this.allCountryCases.slice(0,5).map(country => country.country);
-      deathData = this.allCountryCases.slice(0,5).map(country => country.deaths);
-
       
-    
-      console.log('labels ', labels, deathData, this.allCountryCases)
-
+      this.getAllCovidData();
+      this.getAllCountriesCases();
+      // this.allCountryCases.slice(0,5).map(country => country.deaths);
+      console.log(this.allCountryCases, this.allCovidData, this.deathData, this.labels);
+      
       let myChart = new Chart("myChart", {
         type: 'horizontalBar',
         data: {
-            labels: labels,
+            labels: this.labels,
             datasets: [{
-                label: '# of Votes',
-                data: deathData,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)'
-                ],
+                label: 'Cases',
+                data: this.cases,
+                backgroundColor:  Array.from({length:20},()=> 'rgba(153, 102, 255, 0.2)'),
+                borderColor: Array.from({length:20}, () => 'rgba(153, 102, 255, 1)'),
                 borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                  }]
-              }
-          }
-        });
+            }, 
+            {
+              label: 'Recovered',
+                data: this.recovered,
+                backgroundColor:  Array.from({length:20},()=> 'rgba(75, 192, 192, 0.2)'),
+                borderColor: Array.from({length:20}, () => 'rgba(75, 192, 192, 1)'),
+                borderWidth: 1
+            },
+            {
+              label: 'Deaths',
+                data: this.deathData,
+                backgroundColor:  Array.from({length:20},()=> 'rgba(255, 99, 132, 0.2)'),
+                borderColor: Array.from({length:20}, () => 'rgba(255, 99, 132, 1)'),
+                borderWidth: 1
+            },
+          ]
+        }});
+
       }
     
 }
