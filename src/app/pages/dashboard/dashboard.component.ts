@@ -50,6 +50,33 @@ export class DashboardComponent implements OnInit{
             this.deathData.push(country.deaths); 
             this.cases.push(country.cases);
             this.recovered.push(country.recovered)
+            let myChart = new Chart("myChart", {
+              type: 'horizontalBar',
+              data: {
+                  labels: this.labels,
+                  datasets: [{
+                      label: 'Cases',
+                      data: this.cases,
+                      backgroundColor:  Array.from({length:20},()=> 'rgba(153, 102, 255, 0.2)'),
+                      borderColor: Array.from({length:20}, () => 'rgba(153, 102, 255, 1)'),
+                      borderWidth: 1
+                  }, 
+                  {
+                    label: 'Recovered',
+                      data: this.recovered,
+                      backgroundColor:  Array.from({length:20},()=> 'rgba(75, 192, 192, 0.2)'),
+                      borderColor: Array.from({length:20}, () => 'rgba(75, 192, 192, 1)'),
+                      borderWidth: 1
+                  },
+                  {
+                    label: 'Deaths',
+                      data: this.deathData,
+                      backgroundColor:  Array.from({length:20},()=> 'rgba(255, 99, 132, 0.2)'),
+                      borderColor: Array.from({length:20}, () => 'rgba(255, 99, 132, 1)'),
+                      borderWidth: 1
+                  },
+                ]
+              }});
           });
       }, 
       error => {console.log(error)})
@@ -69,37 +96,6 @@ export class DashboardComponent implements OnInit{
       // GET data from API
       this.getAllCovidData();
       this.getAllCountriesCases();
-      // this.allCountryCases.slice(0,5).map(country => country.deaths);
-      console.log(this.allCountryCases, this.allCovidData, this.deathData, this.labels);
-      
-      let myChart = new Chart("myChart", {
-        type: 'horizontalBar',
-        data: {
-            labels: this.labels,
-            datasets: [{
-                label: 'Cases',
-                data: this.cases,
-                backgroundColor:  Array.from({length:20},()=> 'rgba(153, 102, 255, 0.2)'),
-                borderColor: Array.from({length:20}, () => 'rgba(153, 102, 255, 1)'),
-                borderWidth: 1
-            }, 
-            {
-              label: 'Recovered',
-                data: this.recovered,
-                backgroundColor:  Array.from({length:20},()=> 'rgba(75, 192, 192, 0.2)'),
-                borderColor: Array.from({length:20}, () => 'rgba(75, 192, 192, 1)'),
-                borderWidth: 1
-            },
-            {
-              label: 'Deaths',
-                data: this.deathData,
-                backgroundColor:  Array.from({length:20},()=> 'rgba(255, 99, 132, 0.2)'),
-                borderColor: Array.from({length:20}, () => 'rgba(255, 99, 132, 1)'),
-                borderWidth: 1
-            },
-          ]
-        }});
-
-      }
+    }
     
 }

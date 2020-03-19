@@ -28,7 +28,6 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
       useHash: true
     }),
     SidebarModule,
-    // ChartsModule,
     NavbarModule,
     ToastrModule.forRoot(),
   ],
