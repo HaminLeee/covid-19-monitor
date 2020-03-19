@@ -7,23 +7,37 @@ import { Chart } from 'chart.js';
     moduleId: module.id,
     templateUrl: 'dashboard.component.html'
 })
+@Component({
+  selector: 'my-app',
+  template: `
+  <h1>Press Enter</h1>
+  <input (keydown.enter)="save($event)">`
+})
 
 export class DashboardComponent implements OnInit{
-    public allCovidData: object = {};
-    public allCountryCases: any[] = [];
+    // Fetched Data
+    public allCovidData: object;
+    public allCountryCases: any[];
+    public singleCase: object;
+
+    // Manipulated Data
     public labels: string[] = [];
     public deathData: number[] = [];
     public cases: number[] = [];
     public recovered: number[] = [];
-
+    
     constructor(private dataService: DataService) {}
 
+    searchCountry(event) {
+      this.getSingleCountryCase(event.target.value);
+    }
     getAllCovidData(): void {
       this.dataService
         .getAllCases()
         .subscribe((data: any) => {
           this.allCovidData = data;
-        });
+        }, 
+        error => {console.log(error)});
     }
 
     getAllCountriesCases(): void {
@@ -37,15 +51,22 @@ export class DashboardComponent implements OnInit{
             this.cases.push(country.cases);
             this.recovered.push(country.recovered)
           });
-        })
+      }, 
+      error => {console.log(error)})
     }
-    private accessToken: string = 'YOUR_API';
+    
+    getSingleCountryCase(countryName: string): void {
+      this.dataService
+        .getSingleCountryCases(countryName)
+        .subscribe((data: any) => {
+          this.singleCase = data;
+          console.log(data);
+        }, 
+        error => {console.log(error)})
+    }
 
     ngOnInit(){
-      // let labels: string[];
-      // let deathData: any[];
       // GET data from API
-      
       this.getAllCovidData();
       this.getAllCountriesCases();
       // this.allCountryCases.slice(0,5).map(country => country.deaths);

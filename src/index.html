@@ -26,7 +26,8 @@
       <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
       <meta name="viewport" content="width=device-width" />
 
-      <title>Paper Dashboard Angular by Creative Tim</title>
+
+      <title>COVID19 Live Monitor</title>
 
       <base href="/">
 
@@ -36,9 +37,15 @@
       <!--     Fonts and icons     -->
       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161225821-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+        gtag('config', 'UA-161225821-1');
+        </script>
 
   </head>
   <body>
@@ -48,5 +55,7 @@
           </div>
       </app-root>
   </body>
+
+
 
 </html>

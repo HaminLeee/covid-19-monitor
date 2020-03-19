@@ -10,7 +10,7 @@
           </div>
           <div class="col-7 col-md-8">
             <div class="numbers">
-              <p class="card-category">COVID-19 Cases</p>
+              <p class="card-category"><strong>COVID-19 Cases</strong></p>
               <p class="card-title">{{ allCovidData.cases }}
                 <p>
             </div>
@@ -30,7 +30,7 @@
           </div>
           <div class="col-7 col-md-8">
             <div class="numbers">
-              <p class="card-category">Deaths</p>
+              <p class="card-category"><strong>Deaths</strong></p>
               <p class="card-title">{{ allCovidData.deaths }}
                 <p>
             </div>
@@ -50,7 +50,7 @@
           </div>
           <div class="col-7 col-md-8">
             <div class="numbers">
-              <p class="card-category">Recoverd</p>
+              <p class="card-category"><strong>Recovered</strong></p>
               <p class="card-title">{{ allCovidData.recovered }}
                 <p>
             </div>
@@ -68,6 +68,22 @@
     </div>
   </div>
 </div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 mt-5">
+      <div id="card">
+          <h3>Search detailed information of your country</h3>
+          <input (keydown.enter)="searchCountry($event)" class="mr-3"> <strong>Press Enter</strong>
+          <p></p>
+          <p>Country: {{ singleCase.country }}</p>
+          <p>cases: {{ singleCase.cases }}</p>
+          <p>Today's Cases: {{ singleCase.todayCases }}</p>
+          <p>Deaths: {{ singleCase.deaths }}</p>
+          <p>Today's Deaths: {{ singleCase.todayDeaths }}</p>
+          <p>Recoverd: {{ singleCase.recovered }}</p>
+          <p>Active: {{ singleCase.active }}</p>
+          <p>Critical: {{ singleCase.critical }}</p>
+    </div>
+  </div>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 mt-5">
       <a  href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance">
