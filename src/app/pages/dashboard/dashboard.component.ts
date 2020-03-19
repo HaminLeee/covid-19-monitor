@@ -11,6 +11,7 @@ import Chart from 'chart.js';
 
 export class DashboardComponent implements OnInit{
   public allCovidData: object = {};
+  public allCountryCases: any[] = [];
 
   constructor(private dataService: DataService) {}
 
@@ -19,8 +20,10 @@ export class DashboardComponent implements OnInit{
   public chartColor;
   public chartEmail;
   public chartHours;
+  private accessToken: string = 'YOUR_API';
 
     ngOnInit(){
+      // GET data from API
       this.dataService
       .getAllCases()
       .subscribe((data: any) => {
@@ -28,16 +31,28 @@ export class DashboardComponent implements OnInit{
         this.allCovidData = data;
       });
 
+      this.dataService
+      .getAllCountriesCases()
+      .subscribe((data: any) => {
+        console.log(data);
+        this.allCountryCases = data;
+      });
+
+        this.allCountryCases.sort((a,b) => {
+        console.log(this.allCountryCases);
+        return a.deaths - b.deaths
+      })
+
+
       this.chartColor = "#FFFFFF";
 
       this.canvas = document.getElementById("chartHours");
       this.ctx = this.canvas.getContext("2d");
 
       this.chartHours = new Chart(this.ctx, {
-        type: 'line',
-
+        type: 'bar',
         data: {
-          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+          labels: this.allCountryCases[0],
           datasets: [{
               borderColor: "#6bd098",
               backgroundColor: "#6bd098",
