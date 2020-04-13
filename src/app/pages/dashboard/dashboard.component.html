@@ -1,5 +1,4 @@
-<div class="row">
-  
+<div class="row">  
   <div class="col-lg-4 col-md-6 col-sm-6">
     <div class="card card-stats">
       <div class="card-body ">
@@ -61,6 +60,32 @@
     </div>
   </div>
 </div>
+
+<div class="row mt-5">
+    <h3>Top 50 Countries with COVID-19 Cases</h3>
+    <table cdk-table [dataSource]="allCountryCases" class="table table-striped" *ngIf="allCountryCases" style="margin:0; padding:0; width:100%" cellspacing="0" cellpadding="0" >
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Country</th>
+        <th scope="col">Cases</th>
+        <th scope="col">Death</th>
+        <th scope="col">Recovered</th>
+      </tr>
+      </thead>
+      <tbody>
+  
+      <tr *ngFor="let country of allCountryCases; index as i">
+        <td scope="row">{{ i + 1 }}</td>
+        <td><strong>{{ country?.country }}</strong></td>
+        <td><strong>{{ country?.cases }}</strong></td>
+        <td class="text-danger"><strong>{{ country?.deaths }}</strong></td>
+        <td class="text-success"><strong>{{ country?.recovered }}</strong></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 mt-5">
       <div id="card">
